@@ -7,8 +7,11 @@ import LoansPage from "./pages/LoansPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
-import Register from "./components/SignInUp/Register";
-import Signin from "./components/SignInUp/SignIn";
+import RegisterPage from "./pages/RegisterPage";
+import SigninPage from "./pages/SigninPage";
+import UserInfoPage from "./pages/UserInfoPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
   return (
@@ -16,8 +19,11 @@ function App() {
       <Header />
       <Navbar />
       <Switch>
-        <Route path="/register" component={Register} />
-        <Route path="/signin" component={Signin} />
+        <Route path="/registerpassword" component={RegisterPasswordPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/userinfo" component={UserInfoPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/signin" component={SigninPage} />
         <Route path="/loans" component={LoansPage} />
         <Route path="/about" component={AboutUsPage} />
         <Route path="/services" component={ServicesPage} />

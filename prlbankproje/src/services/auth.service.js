@@ -2,21 +2,38 @@ import axios from "axios";
 
 const API_URL = "https://prlbank.com/api/";
 
-const register = (email, password) => {
-  return axios.post(API_URL + "signup", {
+const register = (
+  firstName,
+  lastName,
+  email,
+  mobilePhoneNumber,
+  ssn,
+  address,
+  login,
+  password,
+  langKey
+) => {
+  return axios.post(API_URL + "register", {
+    firstName,
+    lastName,
     email,
+    mobilePhoneNumber,
+    ssn,
+    address,
+    login,
     password,
+    langKey,
   });
 };
 
-const login = (email, password) => {
+const login = (username, password) => {
   return axios
-    .post(API_URL + "signin", {
-      email,
+    .post(API_URL + "authenticate", {
+      username,
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
+      if (response.data.id_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
 

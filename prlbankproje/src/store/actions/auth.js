@@ -7,31 +7,31 @@ import {
   SET_MESSAGE,
 } from "./types";
 
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 export const register =
   (
-    ssn,
-    firstname,
-    lastname,
-    address,
-    phone,
-    username,
+    firstName,
+    lastName,
     email,
+    mobilePhoneNumber,
+    ssn,
+    address,
+    login,
     password,
-    newpassword
+    langKey
   ) =>
   (dispatch) => {
     return AuthService.register(
-      ssn,
-      firstname,
-      lastname,
-      address,
-      phone,
-      username,
+      firstName,
+      lastName,
       email,
+      mobilePhoneNumber,
+      ssn,
+      address,
+      login,
       password,
-      newpassword
+      langKey
     ).then(
       (response) => {
         dispatch({
@@ -40,7 +40,7 @@ export const register =
 
         dispatch({
           type: SET_MESSAGE,
-          payload: response.data.message,
+          payload: "User Created Successfully",
         });
 
         return Promise.resolve();
@@ -67,8 +67,8 @@ export const register =
     );
   };
 
-export const login = (email, password) => (dispatch) => {
-  return AuthService.login(email, password).then(
+export const login = (username, password) => (dispatch) => {
+  return AuthService.login(username, password).then(
     (data) => {
       dispatch({
         type: LOGIN_SUCCESS,
